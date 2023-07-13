@@ -9,7 +9,7 @@ const fss: FileSystemController = new FileSystemController();
 */
 router.get("/", async (req: Request, res: Response) =>
 {
-    const result = await fss.getCurrentFiles()
+    const result = await fss.getCurrentFiles(req.query)
         .catch((error) =>
         {
             return new Error(error);

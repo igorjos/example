@@ -1,4 +1,5 @@
 import { FileSystemService } from "../services/filesystem";
+import qs from 'qs';
 
 /*TODO Custom decorators for verification  */
 export class FileSystemController
@@ -7,8 +8,8 @@ export class FileSystemController
 
     constructor() { }
 
-    async getCurrentFiles()
+    async getCurrentFiles(query: qs.ParsedQs | qs.ParsedQs[] | string | string[] | [key: string])
     {
-        return await this._fss.getAll();
+        return await this._fss.getAll(query);
     }
 }
