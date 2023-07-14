@@ -1,0 +1,34 @@
+<h3>Search path</h3>
+<div class="row">
+    <div class="col-12">
+        <form #f="ngForm" (submit)="makeSearch(f)">
+            <div class="input-group mb-3">
+                <input type="text" name="path" ngModel required class="form-control"
+                    placeholder="Enter path e.g example1/root.prog" aria-label="Path" aria-describedby="basic-addon1">
+
+                <button class="input-group-text" id="basic-addon1" type="submit">search</button>
+            </div>
+        </form>
+        <div class="spinner-border" role="status" *ngIf="loading">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+    <div class="col-12" *ngIf="imports">
+        <ul class="list-group">
+
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ list: imports?.contents }"></ng-container>
+        </ul>
+
+    </div>
+</div>
+
+<ng-template #recursiveList let-list="list">
+    <li *ngFor="let item of list" class="list-group-item">
+        <span>{{item.file_path}}/</span>
+        <span>{{item.file_name}}</span>
+        <ul *ngIf="item?.imports" class="list-group">
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ list: item.imports.contents }">
+            </ng-container>
+        </ul>
+    </li>
+</ng-template>

@@ -10,7 +10,7 @@ const env: any = process.env;
 const app: Application = express();
 const responseHeaders: any = require('./middlewares/response-headers')
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 

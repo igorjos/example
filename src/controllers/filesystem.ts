@@ -12,4 +12,12 @@ export class FileSystemController
     {
         return await this._fss.getAll(query);
     }
+
+    async getFileByPath({ path }: { path: string })
+    {
+        if (!path)
+            throw new Error('Path is missing');
+
+        return await this._fss.getSingleFileByPath(path);
+    }
 }

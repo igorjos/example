@@ -1,0 +1,17 @@
+<h3>Default file structure</h3>
+<span class="badge bg-secondary">root</span>
+<ul class="list-group">
+
+    <ng-container *ngTemplateOutlet="recursiveList; context:{ list: paths }"></ng-container>
+</ul>
+
+<ng-template #recursiveList let-list="list">
+    <li *ngFor="let item of list" class="list-group-item">
+        <span [ngClass]="{'badge bg-secondary':item.children}">{{item.name}}</span>
+
+        <ul *ngIf="item.children" class="list-group">
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ list: item.children }">
+            </ng-container>
+        </ul>
+    </li>
+</ng-template>

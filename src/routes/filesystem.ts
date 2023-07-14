@@ -22,4 +22,22 @@ router.get("/", async (req: Request, res: Response) =>
         res.status(200).json(result)
 })
 
+/*
+    Get a file by path
+*/
+router.post("/", async (req: Request, res: Response) =>
+{
+    const result = await fss.getFileByPath(req.body)
+        .catch((error) =>
+        {
+            return new Error(error);
+        });
+
+    if (result instanceof Error)
+        res.status(400).json(result);
+
+    else
+        res.status(200).json(result)
+})
+
 module.exports = router;
