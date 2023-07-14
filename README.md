@@ -13,9 +13,13 @@ Run `npm start` to run a the server with pre-built frontend locally.
 -- Before running the server, make sure you have the `.env` file set in the root folder.
 ## example .env
 NODE_ENV=development
+
 PORT=3000
+
 HOST=0.0.0.0
+
 API_KEY=rYQr6M7Ncs0YUS7yBU1ugQ==
+
 FILES_PATH=files
 
 # rebuild
