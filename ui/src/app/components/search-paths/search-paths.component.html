@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="col-12" *ngIf="imports">
-        <ul class="list-group">
+        <ul class="list-group full-height-scroll reduced-top">
 
             <ng-container *ngTemplateOutlet="recursiveList; context:{ list: imports?.contents }"></ng-container>
         </ul>
